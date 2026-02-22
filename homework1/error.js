@@ -1,3 +1,3 @@
 //console.log(typeof(null));
 
-console.log("Error World!")
+console.log("Error World!");
