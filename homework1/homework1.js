@@ -147,10 +147,9 @@ console.log(equals(2,'2'));
 
     //task14
 function isNumber(num){
-    if(isNaN(num)){
-        console.log("NaN");
-        return false;
-    }else return true; 
+    if(!Number.isNaN(num) && typeof(num) === 'number'){
+        return true;
+    }else return false; 
 }
 
 console.log(isNumber('dwq'));
@@ -180,9 +179,10 @@ console.log(toBool(null));
 
     //task17
 function isSimpleObj(value){
-    if(Object.prototype.toString.call(value) === '[object Object]') return true;
-    else if(Object.prototype.toString.call(value) === '[object Array]') return null;
-    else if(Object.prototype.toString.call(value) === '[object Function]') return false;
+    let type = Object.prototype.toString.call(value);
+
+    if(type === '[object Object]') return true;
+    else if(type === '[object Array]' || value === null || type === '[object Function]') return false;
 }
 
 console.log(isSimpleObj(toBool));
@@ -201,9 +201,12 @@ console.log(`!   ${isPrimitive({})}`)
 
     //task19
 function getSumIfIsNumbers(num1, num2){
-    if(!isNaN(num1) && !isNaN(num2)){
-        return num1 + num2;
-    }else return `Invalid Input!`
+    if(!Number.isNaN(num1) && !Number.isNaN(num2)){
+        if(typeof(num1) === 'number' && typeof(num2) === 'number'){
+            return num1 + num2;
+        }
+    }
+    return `Invalid Input!`;
 }
 
 console.log(getSumIfIsNumbers(2,'j'));
