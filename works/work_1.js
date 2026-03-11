@@ -129,7 +129,7 @@ function almostEqual(a,b){
     return ((b - a) < Number.EPSILON);
 }
 
-console.log(almostEqual(0.1 + 0.2, 0.3));
+console.log(almostEqual(0.1 + 0.2, 0.35));
 
 
 
