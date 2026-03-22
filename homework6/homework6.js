@@ -38,22 +38,21 @@ foo.myApply(obj, [23]);
 
 
         //Task3 -> Implemate Bind
-Function.prototype.myBind = function(thisObj){
-    let newThis = {thisObj} ?? globalThis;
+Function.prototype.myBind = function(thisObj, ...args){
+    let newThis = thisObj ?? globalThis;
     let sym = Symbol();
-    newThis[sym] = this;
-
-    return function bindo(...args){
-        newThis[sym](...args);
-        return function(...newArgs){
-            bindo(...newArgs);
-        };
+    let a = this;
+    return function bindo(...newArgs){
+        newThis[sym] = a;
+        let res = newThis[sym](...args, ...newArgs);
+        delete newThis[sym];
+        return res;
     }
 }
 
 
-let bindFoo = foo.myBind(obj);
-bindFoo(23);
+let bindFoo = foo.myBind(obj,55);
+bindFoo(11);
 bindFoo(33);
 bindFoo(44)
 console.log(obj);       //original object is not chanched
