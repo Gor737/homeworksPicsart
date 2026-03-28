@@ -54,5 +54,5 @@ Function.prototype.myBind = function(thisObj, ...args){
 let bindFoo = foo.myBind(obj,55);
 bindFoo(11);
 bindFoo(33);
-bindFoo(44)
+bindFoo(44) 
 console.log(obj);       //original object is not chanched
