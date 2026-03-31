@@ -48,7 +48,6 @@ class Cat extends Animal{
 
 
 const animal1 = new Animal("Generic Animal", 5);
-
 const dog1 = new Dog("Rex", 3, "Labrador");
 const cat1 = new Cat("Milo", 2, "White");
 
