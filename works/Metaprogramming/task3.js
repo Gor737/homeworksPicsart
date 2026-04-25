@@ -14,7 +14,7 @@ const productProxy = new Proxy(new Product(), {
         return Reflect.get(target, prop);
     },
     set(target, prop, value){
-        if(typeof value === 'number' && Number.isFinite(value)){
+        if(typeof value === 'number' && Number.isFinite(value) && value > 0){
             console.log(`Expected output`);
             return Reflect.set(target, prop, value);
         }else throw new TypeError("Type shoud be a number");
@@ -24,7 +24,7 @@ const productProxy = new Proxy(new Product(), {
 productProxy.price = 1200; 
 console.log(productProxy.price);
 
-// productProxy.price = -50; // Should throw TypeError
+productProxy.price = -50; // Should throw TypeError
 // productProxy.price = "Free"; // Should throw TypeError
 
 // Expected output:
